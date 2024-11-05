@@ -1,0 +1,34 @@
+#spring.application.name=ventas
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_ventas_jpa
+    username: postgres
+    password: alvaflores
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # Puedes usar 'none', 'update', 'create', 'create-drop' según tu necesidad
+    show-sql: true      # Esto es opcional, muestra las consultas SQL en la consola
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  #mvc:
+   # static-path-pattern: /swagger*
+
+
+security:
+  jwt:
+    secret-key: c3829fb0945e67e6d1fbee7a1c6c4431737010871de0e183468f5ebd9dfb503b4235df15bc5c70e4b1e7efea346bca99fb3de8a034e1fd04a8f5dfc663e6d689449ff7db594095553855a30457d18b47c801464adb20ebdd5587d5285de151656d498825b68e484cd7a44404ec7bd05f548988abb28d69491e1ed37ee41c6d93
+  
+
+# swagger-ui custom path
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+
+#springdoc.swagger-ui.protocol=https
+#spring.mvc.static-path-pattern=/swagger*
+#springdoc.swagger-ui.path=/swagger-ui.html
