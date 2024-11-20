@@ -13,7 +13,6 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -62,10 +61,10 @@ public class SecurityConfig {
                         //.requestMatchers("/swagger-ui/**").permitAll()
                         //.requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers(SWAGGER_PATHS).permitAll()
-                        .requestMatchers("/api/login").permitAll()
-                        .requestMatchers("/api/register").permitAll()
-                        .requestMatchers("/admin").hasAnyAuthority("ADMIN")
-                        .requestMatchers("/user").hasAnyAuthority("USER")
+                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/auth/register").permitAll()
+                        .requestMatchers("/api/admin").hasAnyAuthority("ADMIN")
+                        .requestMatchers("/api/user").hasAnyAuthority("USER")
                         .anyRequest().authenticated())
             .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -80,13 +79,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // @Bean
-    // public WebSecurityCustomizer webSecurityCustomizer() {
-    //     return web -> web.ignoring().requestMatchers(
-    //             "/swagger-ui/**", "/v3/api-docs/**"
-    //     );
-    // }
-
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
@@ -96,4 +88,5 @@ public class SecurityConfig {
                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
                 .addSecurityItem(new SecurityRequirement().addList("bearer-key"));
     }
+
 }

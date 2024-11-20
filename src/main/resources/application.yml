@@ -1,4 +1,7 @@
 #spring.application.name=ventas
+server:
+  servlet:
+    context-path: /api
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/db_ventas_jpa

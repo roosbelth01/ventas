@@ -69,7 +69,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         usuarioDTO.setUsername(user.getUsername());
         usuarioDTO.setPassword(user.getPassword());
-        usuarioDTO.setRoles(user.getRoles());
+        //usuarioDTO.setRoles(user.getRoles());
         return usuarioDTO;
     }
 
@@ -99,7 +99,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         UsuarioDTO userDto = new UsuarioDTO();
         //userDto.setUsername(user.getUsername());
         userDto.setUsername(user.getUsername());
-        userDto.setRoles(user.getRoles());
+        //userDto.setRoles(user.getRoles());
         return userDto;
     }
     

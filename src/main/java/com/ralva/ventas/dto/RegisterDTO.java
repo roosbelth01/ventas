@@ -1,6 +1,5 @@
 package com.ralva.ventas.dto;
 
-import com.ralva.ventas.domain.Rol;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,5 +11,5 @@ public class RegisterDTO {
     private Long id;
     private String username;
     private String password;
-    private Set<Rol> roles;
+    private Set<RolDTO> roles;
 }
