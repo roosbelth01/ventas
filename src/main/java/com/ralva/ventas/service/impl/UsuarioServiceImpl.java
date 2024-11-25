@@ -1,8 +1,5 @@
 package com.ralva.ventas.service.impl;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,11 +19,11 @@ import com.ralva.ventas.dto.UsuarioDTO;
 import com.ralva.ventas.exception.ConflictException;
 import com.ralva.ventas.exception.JwtAuthenticationException;
 import com.ralva.ventas.exception.NotFoundException;
+import com.ralva.ventas.mapper.auth.UsuarioMapper;
 import com.ralva.ventas.repository.UsuarioRepository;
 import com.ralva.ventas.security.JwtTokenProvider;
 import com.ralva.ventas.service.RolService;
 import com.ralva.ventas.service.UsuarioService;
-//import org.springframework.security.core.userdetails.User;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -36,15 +33,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
+    private final UsuarioMapper usuarioMapper;
 
     public UsuarioServiceImpl(UsuarioRepository usuarioRepository, RolService rolService,
             AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider,
-            PasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder, UsuarioMapper usuarioMapper) {
         this.usuarioRepository = usuarioRepository;
         this.rolService = rolService;
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordEncoder = passwordEncoder;
+        this.usuarioMapper = usuarioMapper;
     }
 
     @Override
@@ -53,23 +52,14 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new ConflictException("El Usuario ya Exciste!!!");
         }
 
-        Usuario user = new Usuario();
-        user.setUsername(registerDTO.getUsername());
+        Usuario user = usuarioMapper.toUsuarioEntity(registerDTO);
         user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-
-        Rol rol = rolService.findByName("USER").orElseThrow(() -> new NotFoundException("Rol No Encontrado :("));
-
-        Set<Rol> roles = new HashSet<>();
-        roles.add(rol);
-        user.setRoles(roles);
-
+        user.getRoles().stream().forEach(e -> {
+            Rol rol = rolService.findByName(e.getNombre()).orElseThrow(() -> new NotFoundException("Rol No Encontrado :("));
+            e.setId(rol.getId());
+        });
         usuarioRepository.save(user);
-
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
-
-        usuarioDTO.setUsername(user.getUsername());
-        usuarioDTO.setPassword(user.getPassword());
-        //usuarioDTO.setRoles(user.getRoles());
+        UsuarioDTO usuarioDTO = usuarioMapper.toRegisterDto(user);
         return usuarioDTO;
     }
 

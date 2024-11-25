@@ -12,7 +12,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -29,11 +28,12 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    //@ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "usuarios_roles", 
         joinColumns = @JoinColumn(name = "usuario_id"), 
         inverseJoinColumns = @JoinColumn(name = "rol_id")
     )
-    private Set<Rol> roles = new HashSet<>();
+    private Set<Rol> roles;
 }
