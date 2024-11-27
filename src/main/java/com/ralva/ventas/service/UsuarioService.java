@@ -2,7 +2,7 @@ package com.ralva.ventas.service;
 
 import org.springframework.http.HttpHeaders;
 
-import com.ralva.ventas.domain.JwtResponseDTO;
+import com.ralva.ventas.dto.JwtResponseDTO;
 import com.ralva.ventas.dto.LoginDTO;
 import com.ralva.ventas.dto.RegisterDTO;
 import com.ralva.ventas.dto.UsuarioDTO;

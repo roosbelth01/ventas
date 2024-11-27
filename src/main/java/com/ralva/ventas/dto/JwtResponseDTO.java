@@ -1,4 +1,4 @@
-package com.ralva.ventas.domain;
+package com.ralva.ventas.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -10,9 +10,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.ralva.ventas.domain.JwtResponseDTO;
 import com.ralva.ventas.domain.Rol;
 import com.ralva.ventas.domain.Usuario;
+import com.ralva.ventas.dto.JwtResponseDTO;
 import com.ralva.ventas.dto.LoginDTO;
 import com.ralva.ventas.dto.RegisterDTO;
 import com.ralva.ventas.dto.UsuarioDTO;

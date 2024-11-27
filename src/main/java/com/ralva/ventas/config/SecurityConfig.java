@@ -63,8 +63,8 @@ public class SecurityConfig {
                         .requestMatchers(SWAGGER_PATHS).permitAll()
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("/auth/register").permitAll()
-                        .requestMatchers("/api/admin").hasAnyAuthority("ADMIN")
-                        .requestMatchers("/api/user").hasAnyAuthority("USER")
+                        .requestMatchers("/admin").hasAnyAuthority("ADMIN")
+                        .requestMatchers("/user").hasAnyAuthority("USER")
                         .anyRequest().authenticated())
             .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
