@@ -1,4 +1,4 @@
-package com.ralva.ventas.dto;
+package com.ralva.ventas.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

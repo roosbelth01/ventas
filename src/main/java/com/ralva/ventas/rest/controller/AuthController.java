@@ -7,10 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import com.ralva.ventas.dto.JwtResponseDTO;
-import com.ralva.ventas.dto.LoginDTO;
-import com.ralva.ventas.dto.RegisterDTO;
-import com.ralva.ventas.dto.UsuarioDTO;
+import com.ralva.ventas.dto.auth.JwtResponseDTO;
+import com.ralva.ventas.dto.auth.LoginDTO;
+import com.ralva.ventas.dto.auth.RegisterDTO;
+import com.ralva.ventas.dto.auth.UsuarioDTO;
 import com.ralva.ventas.security.JwtTokenProvider;
 //import com.ralva.ventas.service.RolService;
 import com.ralva.ventas.service.UsuarioService;

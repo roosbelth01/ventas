@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.ralva.ventas.domain.Rol;
 import com.ralva.ventas.domain.Usuario;
-import com.ralva.ventas.dto.JwtResponseDTO;
-import com.ralva.ventas.dto.LoginDTO;
-import com.ralva.ventas.dto.RegisterDTO;
-import com.ralva.ventas.dto.UsuarioDTO;
+import com.ralva.ventas.dto.auth.JwtResponseDTO;
+import com.ralva.ventas.dto.auth.LoginDTO;
+import com.ralva.ventas.dto.auth.RegisterDTO;
+import com.ralva.ventas.dto.auth.UsuarioDTO;
 import com.ralva.ventas.exception.ConflictException;
 import com.ralva.ventas.exception.JwtAuthenticationException;
 import com.ralva.ventas.exception.NotFoundException;

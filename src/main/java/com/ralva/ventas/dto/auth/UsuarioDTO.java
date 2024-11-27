@@ -1,4 +1,4 @@
-package com.ralva.ventas.dto;
+package com.ralva.ventas.dto.auth;
 
 
 import lombok.Getter;
@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class RegisterDTO {
+public class UsuarioDTO {
     private Long id;
     private String username;
     private String password;

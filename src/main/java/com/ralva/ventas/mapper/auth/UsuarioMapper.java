@@ -3,8 +3,8 @@ package com.ralva.ventas.mapper.auth;
 import org.mapstruct.Mapper;
 
 import com.ralva.ventas.domain.Usuario;
-import com.ralva.ventas.dto.RegisterDTO;
-import com.ralva.ventas.dto.UsuarioDTO;
+import com.ralva.ventas.dto.auth.RegisterDTO;
+import com.ralva.ventas.dto.auth.UsuarioDTO;
 
 
 @Mapper(componentModel = "spring")
