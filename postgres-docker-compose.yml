@@ -1,0 +1,16 @@
+#version: '3.9'
+services:
+  postgres:
+    image: postgres:17.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=alvaflores
+      - POSTGRES_DB=db_ventas_jpa
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

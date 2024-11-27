@@ -1,0 +1,27 @@
+#version: '3.9'
+services:
+  app: 
+    image: eclipse-temurin:21
+    volumes: 
+      - .:/app 
+      - ~/.m2:/root/.m2 
+    working_dir: /app 
+    command: ./mvnw spring-boot:run 
+    ports: 
+      - "8080:8080" 
+    depends_on: 
+      - postgres
+  postgres:
+    image: postgres:17.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=alvaflores
+      - POSTGRES_DB=db_ventas_jpa
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
